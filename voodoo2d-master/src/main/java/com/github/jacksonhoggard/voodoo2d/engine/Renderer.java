@@ -29,17 +29,10 @@ public class Renderer {
     public void init(Window window) throws Exception {
         // Create shader
         shaderProgram = new ShaderProgram();
-        shaderProgram.createVertexShader(Utils.loadResource("/shaders/vertex.vs"));
-        shaderProgram.createFragmentShader(Utils.loadResource("/shaders/fragment.fs"));
-        shaderProgram.link();
-
-        // Create uniforms for modelView and projection matrices and texture
-        shaderProgram.createUniform("projectionMatrix");
-        shaderProgram.createUniform("modelViewMatrix");
-        shaderProgram.createUniform("texture_sampler");
+        shaderProgram.configRenderer();
     }
 
-    public void clear() {
+	public void clear() {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     }
 
