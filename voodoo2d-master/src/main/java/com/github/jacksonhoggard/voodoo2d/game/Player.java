@@ -34,35 +34,63 @@ public class Player extends GameObject {
 
     public void input(Window window) {
         deltaPosition.set(0,0);
-        if(window.isKeyPressed(GLFW_KEY_S))
-        {
-            deltaPosition.y = 1;
-            animations[0].play();
-        }
-        else
-            animations[0].stop();
-        if(window.isKeyPressed(GLFW_KEY_A))
-        {
-            deltaPosition.x = 1;
-            animations[1].play();
-        }
-        else
-            animations[1].stop();
-        if(window.isKeyPressed(GLFW_KEY_D))
-        {
-            deltaPosition.x = -1;
-            animations[2].play();
-        }
-        else
-            animations[2].stop();
-        if(window.isKeyPressed(GLFW_KEY_W))
+        moveDown(window);
+        moveLeft(window);
+        moveRight(window);
+        moveUp(window);
+    }
+
+	/**
+	 * @param window
+	 */
+	private void moveUp(Window window) {
+		if(window.isKeyPressed(GLFW_KEY_W))
         {
             deltaPosition.y = -1;
             animations[3].play();
         }
         else
             animations[3].stop();
-    }
+	}
+
+	/**
+	 * @param window
+	 */
+	private void moveRight(Window window) {
+		if(window.isKeyPressed(GLFW_KEY_D))
+        {
+            deltaPosition.x = -1;
+            animations[2].play();
+        }
+        else
+            animations[2].stop();
+	}
+
+	/**
+	 * @param window
+	 */
+	private void moveLeft(Window window) {
+		if(window.isKeyPressed(GLFW_KEY_A))
+        {
+            deltaPosition.x = 1;
+            animations[1].play();
+        }
+        else
+            animations[1].stop();
+	}
+
+	/**
+	 * @param window
+	 */
+	private void moveDown(Window window) {
+		if(window.isKeyPressed(GLFW_KEY_S))
+        {
+            deltaPosition.y = 1;
+            animations[0].play();
+        }
+        else
+            animations[0].stop();
+	}
 
     public void update()
     {
