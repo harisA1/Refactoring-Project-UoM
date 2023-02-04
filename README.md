@@ -2,4 +2,4 @@
 Εργασία Τεχνολογίας Συστημάτων Λογισμικού
 
 
-First refactorin in Window.jar class
+First refactoring in Window.jar class
