@@ -6,6 +6,8 @@ import org.joml.Matrix4f;
 import static org.lwjgl.opengl.GL20.*;
 import org.lwjgl.system.MemoryStack;
 
+import com.github.jacksonhoggard.voodoo2d.engine.Utils;
+
 public class ShaderProgram {
 
     private final int programId;
@@ -103,4 +105,16 @@ public class ShaderProgram {
             glDeleteProgram(programId);
         }
     }
+
+	
+	public void configRenderer() throws Exception {
+		createVertexShader(Utils.loadResource("/shaders/vertex.vs"));
+	    createFragmentShader(Utils.loadResource("/shaders/fragment.fs"));
+	    link();
+	
+	    // Create uniforms for modelView and projection matrices and texture
+	    createUniform("projectionMatrix");
+	    createUniform("modelViewMatrix");
+	    createUniform("texture_sampler");
+	}
 }
