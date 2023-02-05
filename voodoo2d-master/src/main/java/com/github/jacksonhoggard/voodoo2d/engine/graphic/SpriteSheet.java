@@ -10,12 +10,7 @@ public class SpriteSheet {
     public Texture[] textures;
 
     public SpriteSheet(String filename, int size) {
-        BufferedImage img = null;
-        try {
-            img = ImageIO.read(new File(filename));
-        } catch(IOException e) {
-            e.printStackTrace();
-        }
+        BufferedImage img = loadImage(filename);
 
         int rows = img.getHeight() / size;
         int cols = img.getWidth() / size;
@@ -40,13 +35,22 @@ public class SpriteSheet {
         }
     }
 
-    public SpriteSheet(String filename) {
-        BufferedImage img = null;
+	/**
+	 * @param filename
+	 * @return
+	 */
+	private BufferedImage loadImage(String filename) {
+		BufferedImage img = null;
         try {
             img = ImageIO.read(new File(filename));
         } catch(IOException e) {
             e.printStackTrace();
         }
+		return img;
+	}
+
+    public SpriteSheet(String filename) {
+        BufferedImage img = loadImage(filename);
 
         int rows = img.getHeight();
         int cols = img.getWidth();
