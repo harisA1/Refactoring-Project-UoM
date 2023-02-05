@@ -34,7 +34,7 @@ public class Animation {
         this.rate = 1.0/(double)rate;
     }
 
-    protected void run() {
+    public void run() {
         currentTime = Timer.getTime();
         elapsedTime += currentTime - lastTime;
 

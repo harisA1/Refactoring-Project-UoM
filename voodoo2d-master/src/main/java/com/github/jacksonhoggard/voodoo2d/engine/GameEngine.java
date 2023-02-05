@@ -1,6 +1,6 @@
 package com.github.jacksonhoggard.voodoo2d.engine;
 
-import com.github.jacksonhoggard.voodoo2d.engine.animation.AnimationManager;
+import com.github.jacksonhoggard.voodoo2d.engine.gameObject.GameObject;
 
 public class GameEngine implements Runnable {
 
@@ -14,7 +14,7 @@ public class GameEngine implements Runnable {
 
     private final MouseInput mouseInput;
 
-    private final AnimationManager animationManager;
+    private final GameObject gameObject;
 
     private final IGameLogic gameLogic;
 
@@ -30,7 +30,8 @@ public class GameEngine implements Runnable {
         this.windowTitle = windowTitle;
         timer = new Timer();
         mouseInput = new MouseInput();
-        animationManager = new AnimationManager();
+        //this.animationManager = new AnimationManager();
+        this.gameObject = new GameObject();
     }
 
     public GameEngine(String windowTitle, boolean vSync, boolean antiAliasing, IGameLogic gameLogic) throws Exception {
@@ -104,7 +105,8 @@ public class GameEngine implements Runnable {
     }
 
     protected void update(float interval) {
-        animationManager.playAnimations();
+        //animationManager.playAnimations();
+        gameObject.playAnimations();
         gameLogic.update(interval, mouseInput);
     }
 

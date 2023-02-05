@@ -81,7 +81,15 @@ public class GameObject {
         this.animation = animation;
     }
 
-    public static ArrayList<GameObject> getGameObjects() {
+    public void playAnimations() {
+	    for (GameObject g : GameObject.getGameObjects()) {
+	        if (g.getAnimation().isPlaying()) {
+	            g.getAnimation().run();
+	        }
+	    }
+	}
+
+	public static ArrayList<GameObject> getGameObjects() {
         return gameObjects;
     }
 }
